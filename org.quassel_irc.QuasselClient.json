@@ -7,10 +7,10 @@
     "rename-icon": "quassel",
     "rename-desktop-file": "quasselclient.desktop",
     "finish-args": [
+        "--share=ipc",
         "--socket=x11",
-        "--share=network",
-        "--env=QT_QPA_PLATFORM=flatpak",
-        "--env=QT_QPA_FLATPAK_PLATFORM=xcb"
+        "--device=dri",
+        "--share=network"
     ],
     "modules": [
         {
