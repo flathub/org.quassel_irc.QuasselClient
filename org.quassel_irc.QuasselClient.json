@@ -34,8 +34,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "http://quassel-irc.org/pub/quassel-0.12.4.tar.bz2",
-                    "sha256": "93e4e54cb3743cbe2e5684c2fcba94fd2bc2cd739f7672dee14341b49c29444d"
+                    "url": "https://quassel-irc.org/pub/quassel-0.12.5.tar.bz2",
+                    "sha256": "1894574dfd79654152a5b7427e7df592b055ae908230504f98a4cb48961e74e2"
                 }
             ]
         }
