@@ -10,7 +10,8 @@
         "--share=ipc",
         "--socket=x11",
         "--device=dri",
-        "--share=network"
+        "--share=network",
+        "--filesystem=xdg-config/kdeglobals:ro"
     ],
     "modules": [
         {
