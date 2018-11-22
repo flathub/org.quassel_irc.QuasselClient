@@ -24,6 +24,6 @@
     <id>quasselclient.desktop</id>
   </provides>
   <releases>
-    <release version="0.12.5" date="2018-04-24" />
+    <release version="0.13" date="2018-11-17" />
   </releases>
 </component>
