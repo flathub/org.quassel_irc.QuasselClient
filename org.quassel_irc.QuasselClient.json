@@ -10,6 +10,7 @@
         "--share=ipc",
         "--socket=x11",
         "--device=dri",
+        "--socket=pulseaudio",
         "--share=network"
     ],
     "modules": [
@@ -36,6 +37,21 @@
                     "type": "archive",
                     "url": "https://quassel-irc.org/pub/quassel-0.13.1.tar.bz2",
                     "sha256": "48efee9778743b1db9f44efb91d1c913104db01190c57f2ff57483c39a97e855"
+                }
+            ]
+        },
+        {
+            "name": "oxygen-sound-theme",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/share/sounds",
+                "cp -a sounds/*.ogg /app/share/sounds/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/plasma/5.16.3/oxygen-5.16.3.tar.xz",
+                    "sha256": "552b008ec09d08c4704aa3ea66b2d73cf98dc35be290792d34d7962c59f51544"
                 }
             ]
         }
