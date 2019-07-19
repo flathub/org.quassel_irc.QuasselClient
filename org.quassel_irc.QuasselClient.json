@@ -21,8 +21,7 @@
                 "-DUSE_QT5=1",
                 "-DWANT_CORE=0",
                 "-DWANT_MONO=0",
-                "-DWITH_KDE=1",
-                "-DEMBED_DATA=1",
+                "-DWITH_KDE=0",
                 "-DHAVE_SSL=1"
             ],
             "post-install": [
