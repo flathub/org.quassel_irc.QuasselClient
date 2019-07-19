@@ -37,6 +37,24 @@
                     "url": "https://quassel-irc.org/pub/quassel-0.13.1.tar.bz2",
                     "sha256": "48efee9778743b1db9f44efb91d1c913104db01190c57f2ff57483c39a97e855"
                 }
+            ],
+            "modules": [
+                {
+                    "name": "snorenotify",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "config-opts": [
+                        "-DBUILD_settings=OFF",
+                        "-DBUILD_daemon=OFF"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://download.kde.org/stable/snorenotify/0.7.0/src/snorenotify-0.7.0.tar.xz",
+                            "sha256": "6d411ba6e31a73db56d298195f8336f66f8fe4fffd64d5fde3f14090e68ee64b"
+                        }
+                    ]
+                }
             ]
         },
         {
