@@ -18,7 +18,7 @@
         "--talk-name=org.kde.StatusNotifierWatcher",
         "--talk-name=org.freedesktop.DockManager",
         "--talk-name=net.launchpad.DockManager",
-	"--env=LD_LIBRARY_PATH=/app/lib:/app/lib/x86_64-linux-gnu"
+        "--env=LD_LIBRARY_PATH=/app/lib:/app/lib/x86_64-linux-gnu"
     ],
     "modules": [
         {
