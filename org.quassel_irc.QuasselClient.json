@@ -1,7 +1,7 @@
 {
     "app-id": "org.quassel_irc.QuasselClient",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.13",
+    "runtime-version": "5.15",
     "sdk": "org.kde.Sdk",
     "command": "quasselclient",
     "rename-icon": "quassel",
