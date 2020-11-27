@@ -75,8 +75,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/plasma/5.16.3/oxygen-5.16.3.tar.xz",
-                    "sha256": "552b008ec09d08c4704aa3ea66b2d73cf98dc35be290792d34d7962c59f51544"
+                    "url": "https://download.kde.org/stable/plasma/5.20.3/oxygen-5.20.3.tar.xz",
+                    "sha256": "8c6c5068065f3989d836770ec677d883b0650afdeb2e495d49c9c0adf6e834ea"
                 }
             ]
         }
