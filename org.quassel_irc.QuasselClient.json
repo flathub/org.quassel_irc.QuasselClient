@@ -1,7 +1,7 @@
 {
     "app-id": "org.quassel_irc.QuasselClient",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.13",
+    "runtime-version": "5.15",
     "sdk": "org.kde.Sdk",
     "command": "quasselclient",
     "rename-icon": "quassel",
@@ -40,6 +40,10 @@
                     "type": "archive",
                     "url": "https://quassel-irc.org/pub/quassel-0.13.1.tar.bz2",
                     "sha256": "48efee9778743b1db9f44efb91d1c913104db01190c57f2ff57483c39a97e855"
+                },
+                {
+                    "type": "patch",
+                    "path": "quassel-0.13.1-qt5.14.patch"
                 }
             ],
             "modules": [
