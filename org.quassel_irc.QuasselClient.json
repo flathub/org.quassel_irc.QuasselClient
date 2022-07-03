@@ -26,7 +26,8 @@
                 "-DWANT_CORE=0",
                 "-DWANT_MONO=0",
                 "-DWITH_KDE=0",
-                "-DHAVE_SSL=1"
+                "-DHAVE_SSL=1",
+                "-DENABLE_SHARED=0"
             ],
             "post-install": [
                 "install -Dm644 org.quassel_irc.QuasselClient.appdata.xml /app/share/appdata/org.quassel_irc.QuasselClient.appdata.xml"
