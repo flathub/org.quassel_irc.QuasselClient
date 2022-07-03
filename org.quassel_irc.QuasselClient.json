@@ -44,6 +44,27 @@
             ],
             "modules": [
                 {
+                    "name": "boost",
+                    "buildsystem": "simple",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://boostorg.jfrog.io/artifactory/main/release/1.79.0/source/boost_1_79_0.tar.bz2",
+                            "sha256": "475d589d51a7f8b3ba2ba4eda022b170e562ca3b760ee922c146b6c65856ef39",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 6845,
+                                "stable-only": true,
+                                "url-template": "https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2"
+                            }
+                        }
+                    ],
+                    "build-commands": [
+                        "./bootstrap.sh --prefix=/app --with-libraries=headers",
+                        "./b2 variant=release link=shared runtime-link=shared -j $FLATPAK_BUILDER_N_JOBS install"
+                    ]
+                },
+                {
                     "name": "snorenotify",
                     "buildsystem": "cmake-ninja",
                     "builddir": true,
@@ -76,5 +97,9 @@
                 }
             ]
         }
+    ],
+    "cleanup-commands": [
+        "rm -rf /app/include",
+        "rm -rf /app/lib/{cmake,mkspecs,pkgconfig}"
     ]
 }
