@@ -42,7 +42,7 @@
                     "x-checker-data": {
                         "type": "html",
                         "url": "https://quassel-irc.org/pub/",
-                        "pattern": "(quassel-(\\d+\.\\d+\\.\\d+)\\.tar\\.xz)"
+                        "pattern": "(quassel-(\\d+\\.\\d+\\.\\d+)\\.tar\\.xz)"
                     }
                 }
             ],
