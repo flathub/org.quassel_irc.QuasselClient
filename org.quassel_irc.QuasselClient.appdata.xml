@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>org.quassel_irc.QuasselClient.desktop</id>
+  <developer_name>The Quassel IRC Team</developer_name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0 OR GPL-3.0</project_license>
   <name>Quassel Client</name>
