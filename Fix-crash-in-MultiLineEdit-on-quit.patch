@@ -1,0 +1,59 @@
+From 9d2c9e7bd1e650b91615acc15a97223f7b9b7298 Mon Sep 17 00:00:00 2001
+From: Felix Geyer <debfx@fobos.de>
+Date: Sun, 2 Apr 2023 18:43:52 +0200
+Subject: [PATCH] Fix crash in ~MultiLineEdit() on quit
+
+Quassel crashed on quit in ~MultiLineEdit() with Sonnet >= v5.102 since
+https://invent.kde.org/frameworks/sonnet/-/commit/ab31a3e27482539985c666a85aa0b07ac52c5c5f
+
+Thread 1 "quasselclient" received signal SIGSEGV, Segmentation fault.
+Stacktrace:
+QObject::removeEventFilter(QObject*) () at /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+Sonnet::SpellCheckDecorator::~SpellCheckDecorator() () at /usr/lib/x86_64-linux-gnu/libKF5SonnetUi.so.5
+Sonnet::SpellCheckDecorator::~SpellCheckDecorator() () at /usr/lib/x86_64-linux-gnu/libKF5SonnetUi.so.5
+QObjectPrivate::deleteChildren() () at /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+QWidget::~QWidget() () at /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5
+MultiLineEdit::~MultiLineEdit() (this=0x555555f71550, __in_chrg=<optimized out>) at /run/build/quasselclient/src/uisupport/quassel_uisupport_autogen/EWIEGA46WW/../../multilineedit.h:4
+
+See https://bugs.kde.org/show_bug.cgi?id=464499 for a similar crash in
+digiKam.
+
+Reported in https://github.com/flathub/org.quassel_irc.QuasselClient/issues/20
+---
+ src/uisupport/multilineedit.cpp | 7 +++++++
+ src/uisupport/multilineedit.h   | 1 +
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/uisupport/multilineedit.cpp b/src/uisupport/multilineedit.cpp
+index 37118315..faba8542 100644
+--- a/src/uisupport/multilineedit.cpp
++++ b/src/uisupport/multilineedit.cpp
+@@ -73,6 +73,13 @@ MultiLineEdit::MultiLineEdit(QWidget* parent)
+     _mircColorMap["15"] = "#c0c0c0";
+ }
+ 
++MultiLineEdit::~MultiLineEdit()
++{
++#if defined HAVE_SONNET && !defined HAVE_KDE
++    delete _spellCheckDecorator;
++#endif
++}
++
+ #if defined HAVE_SONNET && !defined HAVE_KDE
+ Sonnet::Highlighter* MultiLineEdit::highlighter() const
+ {
+diff --git a/src/uisupport/multilineedit.h b/src/uisupport/multilineedit.h
+index fad8b67c..4b082e0b 100644
+--- a/src/uisupport/multilineedit.h
++++ b/src/uisupport/multilineedit.h
+@@ -52,6 +52,7 @@ class UISUPPORT_EXPORT MultiLineEdit : public MultiLineEditParent
+     };
+ 
+     MultiLineEdit(QWidget* parent = nullptr);
++    ~MultiLineEdit() override;
+ 
+     void setCustomFont(const QFont&);  // should be used instead setFont(), so we can set our size correctly
+ 
+-- 
+2.39.2
+
