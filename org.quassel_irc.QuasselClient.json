@@ -49,6 +49,10 @@
                 {
                     "type": "patch",
                     "path": "Fix-crash-in-MultiLineEdit-on-quit.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "Set-IconThemePath-to-shared-dir.patch"
                 }
             ],
             "modules": [
