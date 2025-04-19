@@ -27,8 +27,9 @@
     <content_attribute id="social-info">mild</content_attribute>
   </content_rating>
   <provides>
-    <id>quasselclient.desktop</id>
+    <id>org.quassel_irc.QuasselClient.desktop</id>
   </provides>
+  <launchable type="desktop-id">org.quassel_irc.QuasselClient.desktop</launchable>
   <releases>
     <release version="0.14.0" date="2022-01-01" />
     <release version="0.13.1" date="2019-02-15" />
