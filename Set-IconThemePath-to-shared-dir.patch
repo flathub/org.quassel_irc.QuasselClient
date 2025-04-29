@@ -1,0 +1,31 @@
+From e1d4dd3b0aa6faf698abf9de2cc9f1baa97a4256 Mon Sep 17 00:00:00 2001
+From: John <me@johnnynator.dev>
+Date: Sun, 8 Dec 2024 00:58:36 +0100
+Subject: [PATCH] Set IconThemePath to shared dir
+
+We need _iconThemeDir to be shared between host and app, since it stores
+the icons for StatusNotifierItem. QUassel sends the path to it over dbus.
+Using a wrapper script to set TMPDIR would not work here, since
+QDir::tempPath uses realpath(3) somewhere internally, and will return
+/run/flatpak/app instead of env(TMPDIR).
+
+---
+ src/qtui/statusnotifieritem.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qtui/statusnotifieritem.cpp b/src/qtui/statusnotifieritem.cpp
+index 244ceabe..19522258 100644
+--- a/src/qtui/statusnotifieritem.cpp
++++ b/src/qtui/statusnotifieritem.cpp
+@@ -72,7 +72,7 @@ protected:
+ 
+ StatusNotifierItem::StatusNotifierItem(QWidget* parent)
+     : StatusNotifierItemParent(parent)
+-    , _iconThemeDir{QDir::tempPath() + QLatin1String{"/quassel-sni-XXXXXX"}}
++    , _iconThemeDir{qgetenv("XDG_RUNTIME_DIR") + QLatin1String("/app/") + qgetenv("FLATPAK_ID") + QLatin1String{"/quassel-sni-XXXXXX"}}
+ {
+     static bool registered = []() -> bool {
+         qDBusRegisterMetaType<DBusImageStruct>();
+-- 
+2.47.0
+
