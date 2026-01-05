@@ -1,0 +1,24 @@
+From 0a8d3a7a3b337262816da5bbaa45c3fc50975703 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christian=20G=C3=B6ttsche?= <cgoettsche@seltendoof.de>
+Date: Mon, 5 Jan 2026 17:04:35 +0100
+Subject: [PATCH] CMake: satisfy KDE runtime 25.08 requirements
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5a6b337..119fad8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+-project( SnoreNotify )
+-cmake_minimum_required( VERSION 2.8.12 )
++project( SnoreNotify VERSION 0.7.0 )
++cmake_minimum_required( VERSION 3.5 )
+ 
+ include(FeatureSummary)
+ 
+-- 
+2.52.0
+
