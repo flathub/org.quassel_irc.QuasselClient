@@ -78,7 +78,8 @@
                     "builddir": true,
                     "config-opts": [
                         "-DBUILD_settings=OFF",
-                        "-DBUILD_daemon=OFF"
+                        "-DBUILD_daemon=OFF",
+                        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
                     ],
                     "sources": [
                         {
