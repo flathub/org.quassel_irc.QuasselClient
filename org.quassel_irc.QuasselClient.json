@@ -1,7 +1,7 @@
 {
     "app-id": "org.quassel_irc.QuasselClient",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-24.08",
+    "runtime-version": "5.15-25.08",
     "sdk": "org.kde.Sdk",
     "command": "quasselclient",
     "rename-icon": "quassel",
@@ -78,13 +78,18 @@
                     "builddir": true,
                     "config-opts": [
                         "-DBUILD_settings=OFF",
-                        "-DBUILD_daemon=OFF"
+                        "-DBUILD_daemon=OFF",
+                        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
                     ],
                     "sources": [
                         {
                             "type": "archive",
                             "url": "https://download.kde.org/stable/snorenotify/0.7.0/src/snorenotify-0.7.0.tar.xz",
                             "sha256": "6d411ba6e31a73db56d298195f8336f66f8fe4fffd64d5fde3f14090e68ee64b"
+                        },
+                        {
+                            "type": "patch",
+                            "path": "CMake-satisfy-KDE-runtime-25.08-requirements.patch"
                         }
                     ]
                 }
