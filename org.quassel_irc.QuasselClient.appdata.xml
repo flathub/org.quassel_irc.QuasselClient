@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-  <id>org.quassel_irc.QuasselClient.desktop</id>
-  <developer_name>The Quassel IRC Team</developer_name>
+<component type="desktop-application">
+  <id>org.quassel_irc.QuasselClient</id>
+  <developer id="org.quassel_irc">
+    <name>The Quassel IRC Team</name>
+  </developer>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0 OR GPL-3.0</project_license>
   <name>Quassel Client</name>
   <summary>Modern distributed IRC client</summary>
   <translation type="gettext">quassel</translation>
-  <url type="homepage">http://quassel-irc.org</url>
+  <url type="homepage">https://quassel-irc.org</url>
   <url type="bugtracker">https://bugs.quassel-irc.org/</url>
   <url type="help">https://bugs.quassel-irc.org/projects/quassel-irc/wiki</url>
+  <url type="vcs-browser">https://github.com/quassel/quassel</url>
   <description>
     <p>Quassel IRC is a modern, cross-platform, distributed IRC client based on the Qt framework.</p>
     <p>Distributed means that one (or multiple) client(s) can attach to and detach from a central core that stays permanently online -- much like the popular combination of screen and a text-based IRC client such as WeeChat, and similar to (but much more featureful than) so-called BNCs. Re-attaching your client will show your IRC session in the same state as you left it in (plus whatever happened while you were gone), and this even when you re-attach from a different location. In addition, Quassel IRC can be used like a traditional client, with providing both client and core functionality in one binary. This so-called "Monolithic Client" completely hides the distributed nature, so for a purely local installation, Quassel IRC can be setup very easily.</p>
@@ -29,6 +32,9 @@
   <provides>
     <id>org.quassel_irc.QuasselClient.desktop</id>
   </provides>
+  <replaces>
+    <id>org.quassel_irc.QuasselClient.desktop</id>
+  </replaces>
   <launchable type="desktop-id">org.quassel_irc.QuasselClient.desktop</launchable>
   <releases>
     <release version="0.14.0" date="2022-01-01" />
