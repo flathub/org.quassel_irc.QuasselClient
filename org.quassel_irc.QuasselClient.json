@@ -60,6 +60,10 @@
                 {
                     "name": "boost",
                     "buildsystem": "simple",
+                    "build-commands": [
+                        "./bootstrap.sh --prefix=/app --with-libraries=headers",
+                        "./b2 variant=release link=shared runtime-link=shared -j $FLATPAK_BUILDER_N_JOBS install"
+                    ],
                     "sources": [
                         {
                             "type": "archive",
@@ -72,10 +76,6 @@
                                 "url-template": "https://archives.boost.io/release/$version/source/boost_${major}_${minor}_$patch.tar.bz2"
                             }
                         }
-                    ],
-                    "build-commands": [
-                        "./bootstrap.sh --prefix=/app --with-libraries=headers",
-                        "./b2 variant=release link=shared runtime-link=shared -j $FLATPAK_BUILDER_N_JOBS install"
                     ]
                 },
                 {
