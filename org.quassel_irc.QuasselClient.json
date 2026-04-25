@@ -46,6 +46,7 @@
                     "url": "https://quassel-irc.org/pub/quassel-0.14.0.tar.xz",
                     "sha256": "090777f37a6ae1057a046d5c2896ce5e4bef2382377e3ba52c63efe6b5fe4e10",
                     "x-checker-data": {
+                        "is-main-source": true,
                         "type": "html",
                         "url": "https://quassel-irc.org/pub/",
                         "pattern": "(quassel-(\\d+\\.\\d+\\.\\d+)\\.tar\\.xz)"
