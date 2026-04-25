@@ -28,7 +28,7 @@
                 "-DENABLE_SHARED=0"
             ],
             "post-install": [
-                "install -Dm644 org.quassel_irc.QuasselClient.appdata.xml /app/share/appdata/org.quassel_irc.QuasselClient.appdata.xml"
+                "install -Dm644 org.quassel_irc.QuasselClient.appdata.xml -t /app/share/metainfo/"
             ],
             "sources": [
                 {
