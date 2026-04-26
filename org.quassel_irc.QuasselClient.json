@@ -1,7 +1,7 @@
 {
     "app-id": "org.quassel_irc.QuasselClient",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-24.08",
+    "runtime-version": "5.15-25.08",
     "sdk": "org.kde.Sdk",
     "command": "quasselclient",
     "rename-icon": "quassel",
@@ -17,6 +17,12 @@
         "--talk-name=org.freedesktop.DockManager",
         "--talk-name=net.launchpad.DockManager"
     ],
+    "cleanup": [
+        "/include",
+        "/lib/cmake",
+        "/mkspecs",
+        "/lib/pkgconfig"
+    ],
     "modules": [
         {
             "name": "quasselclient",
@@ -28,7 +34,7 @@
                 "-DENABLE_SHARED=0"
             ],
             "post-install": [
-                "install -Dm644 org.quassel_irc.QuasselClient.appdata.xml /app/share/appdata/org.quassel_irc.QuasselClient.appdata.xml"
+                "install -Dm644 org.quassel_irc.QuasselClient.appdata.xml -t /app/share/metainfo/"
             ],
             "sources": [
                 {
@@ -40,6 +46,7 @@
                     "url": "https://quassel-irc.org/pub/quassel-0.14.0.tar.xz",
                     "sha256": "090777f37a6ae1057a046d5c2896ce5e4bef2382377e3ba52c63efe6b5fe4e10",
                     "x-checker-data": {
+                        "is-main-source": true,
                         "type": "html",
                         "url": "https://quassel-irc.org/pub/",
                         "pattern": "(quassel-(\\d+\\.\\d+\\.\\d+)\\.tar\\.xz)"
@@ -54,11 +61,15 @@
                 {
                     "name": "boost",
                     "buildsystem": "simple",
+                    "build-commands": [
+                        "./bootstrap.sh --prefix=/app --with-libraries=headers",
+                        "./b2 variant=release link=shared runtime-link=shared -j $FLATPAK_BUILDER_N_JOBS install"
+                    ],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://archives.boost.io/release/1.88.0/source/boost_1_88_0.tar.bz2",
-                            "sha256": "46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b",
+                            "url": "https://archives.boost.io/release/1.91.0/source/boost_1_91_0.tar.bz2",
+                            "sha256": "de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 6845,
@@ -66,10 +77,6 @@
                                 "url-template": "https://archives.boost.io/release/$version/source/boost_${major}_${minor}_$patch.tar.bz2"
                             }
                         }
-                    ],
-                    "build-commands": [
-                        "./bootstrap.sh --prefix=/app --with-libraries=headers",
-                        "./b2 variant=release link=shared runtime-link=shared -j $FLATPAK_BUILDER_N_JOBS install"
                     ]
                 },
                 {
@@ -85,6 +92,10 @@
                             "type": "archive",
                             "url": "https://download.kde.org/stable/snorenotify/0.7.0/src/snorenotify-0.7.0.tar.xz",
                             "sha256": "6d411ba6e31a73db56d298195f8336f66f8fe4fffd64d5fde3f14090e68ee64b"
+                        },
+                        {
+                            "type": "patch",
+                            "path": "CMake-satisfy-KDE-runtime-25.08-requirements.patch"
                         }
                     ]
                 }
@@ -105,9 +116,5 @@
                 }
             ]
         }
-    ],
-    "cleanup-commands": [
-        "rm -rf /app/include",
-        "rm -rf /app/lib/{cmake,mkspecs,pkgconfig}"
     ]
 }
